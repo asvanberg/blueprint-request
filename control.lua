@@ -47,7 +47,7 @@ do
 
     if event.element ~= button then return end
 
-    local items = collect_items(character.get_blueprint_entities())
+    local items = collect_items(player.get_blueprint_entities())
     -- Table pointing to the logistic slot to modify
     local tbl = {}
 
