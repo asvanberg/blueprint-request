@@ -127,7 +127,10 @@ do
     end
 
     for _, entity in pairs(blueprint_entities) do
-      insert(entity.name, 1)
+      local replacements = get_replacements(entity.name)
+      for _, replacement in pairs(replacements) do
+        insert(replacement.name, replacement.amount)
+      end
 
       if entity.items then -- modules
         for item, count in pairs(entity.items) do
@@ -136,6 +139,10 @@ do
       end
     end
     return items
+  end
+
+  function get_replacements(entity)
+    return game.entity_prototypes[entity].mineable_properties.products
   end
 
   script.on_event(defines.events.on_player_cursor_stack_changed, handle_cursor_changed)
