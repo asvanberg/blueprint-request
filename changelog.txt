@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2021-04-06
+  Bugs:
+    - Handle combined entities (such as curved rail)
+    - Support blueprints picked up from the library
+    - Don't create multiple buttons when switching between blueprints
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2021-04-05
+  Info:
+    - Initial release
