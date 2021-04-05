@@ -24,14 +24,17 @@ do
     if not player or not player.valid then return end
 
     if player.is_cursor_blueprint() then
-      button = mod_gui.get_button_flow(player).add({
-        name = buttonName,
-        type = "sprite-button",
-        sprite = "blueprint-request-sprite",
-        tooltip = "Request all items in blueprint"
-      })
+      if not button then
+        button = mod_gui.get_button_flow(player).add({
+          name = "blueprint-request-button",
+          type = "sprite-button",
+          sprite = "blueprint-request-sprite",
+          tooltip = "Request all items in blueprint"
+        })
+      end
     elseif button then
       button.destroy()
+      button = nil
     end
   end
 
