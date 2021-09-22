@@ -1,6 +1,6 @@
 {
   "name": "blueprint-request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "Blueprint logistics requests",
   "author": "Feidan",
   "description": "A button that you can click with a blueprint in hand to add all its contents to your current personal logistics requests. Click multiple times to request more. Right click to request less, will not reduce any requests unless all requests can be reduced to stop the button from removing your useful default requests.",
