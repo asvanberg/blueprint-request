@@ -128,8 +128,11 @@ do
 
     for _, entity in pairs(blueprint_entities) do
       local replacements = get_replacements(entity.name)
-      for _, replacement in pairs(replacements) do
-        insert(replacement.name, replacement.amount)
+      -- for composite entities where not everything has a mineable result
+      if replacements then
+        for _, replacement in pairs(replacements) do
+          insert(replacement.name, replacement.amount)
+        end
       end
 
       if entity.items then -- modules
