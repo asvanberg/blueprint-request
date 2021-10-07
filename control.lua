@@ -17,16 +17,17 @@ do
     end
   end
 
-  local button
+  local BUTTON_NAME = "blueprint-request-button"
 
   function handle_cursor_changed(event)
     local player = game.players[event.player_index]
     if not player or not player.valid then return end
 
+    local button = mod_gui.get_button_flow(player)[BUTTON_NAME]
     if player.is_cursor_blueprint() then
       if not button then
         button = mod_gui.get_button_flow(player).add({
-          name = "blueprint-request-button",
+          name = BUTTON_NAME,
           type = "sprite-button",
           sprite = "blueprint-request-sprite",
           tooltip = "Request all items in blueprint"
@@ -45,7 +46,7 @@ do
     local character = player.character
     if not character or not character.valid then return end
 
-    if event.element ~= button then return end
+    if event.element.name ~= BUTTON_NAME then return end
 
     local items = collect_items(player.get_blueprint_entities())
     -- Table pointing to the logistic slot to modify
