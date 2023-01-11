@@ -83,7 +83,7 @@ do
           tbl[item] = {
             slot = slot,
             current_min = 0,
-            current_max = 0,
+            current_max = settings.get_player_settings(player)['blueprint-request-default-max-infinity'].value and MAX_LOGISTIC_REQUEST or 0,
             count = count
           }
           i = slot + 1
