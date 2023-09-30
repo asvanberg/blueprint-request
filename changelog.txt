@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2023-09-30
+  Changes:
+    - Max request for new items set to infinity.
+      If you request a blueprint with 50 inserters while you have 100 in your inventory will no longer cause 50 to be trashed because the request will be 50-infinity rather than exactly 50.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2021-10-07
   Bugs:
