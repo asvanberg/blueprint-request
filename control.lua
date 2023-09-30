@@ -96,7 +96,7 @@ do
         character.set_personal_logistic_slot(request.slot, {
           name = item,
           min = handle_overflow(request.current_min, request.count),
-          max = handle_overflow(request.current_max, request.count),
+          max = request.current_max == 0 and MAX_LOGISTIC_REQUEST or handle_overflow(request.current_max, request.count),
         })
       end
     elseif event.button == defines.mouse_button_type.right then -- removing
