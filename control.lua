@@ -47,8 +47,10 @@ do
     if not character or not character.valid then return end
 
     if event.element.name ~= BUTTON_NAME then return end
+    
+    if not player.cursor_stack then return end
 
-    local items = collect_items(player.get_blueprint_entities())
+    local items = collect_items(player.cursor_stack)
     -- Table pointing to the logistic slot to modify
     local tbl = {}
 
@@ -117,7 +119,7 @@ do
     end
   end
 
-  function collect_items(blueprint_entities)
+  function collect_items(blueprint)
     local items = {}
     local function insert(item_name, count)
       if not items[item_name] then
@@ -127,6 +129,7 @@ do
        end
     end
 
+    local blueprint_entities = blueprint.get_blueprint_entities() or {}
     for _, entity in pairs(blueprint_entities) do
       local replacements = get_replacements(entity.name)
       -- for composite entities where not everything has a mineable result
@@ -141,6 +144,11 @@ do
           insert(item, count)
         end
       end
+    end
+    
+    local blueprint_tiles = blueprint.get_blueprint_tiles() or {}
+    for _, tile in pairs(blueprint_tiles) do
+      insert(tile.name, 1)
     end
     return items
   end
